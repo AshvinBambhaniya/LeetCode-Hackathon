@@ -20,7 +20,7 @@ func longestCommonPrefix(strs []string) string {
 			} else {
 				prefix = prefix[:len(prefix)-1]
 				if prefix == "" {
-					retSurn ""
+					return ""
 				}
 			}
 		}
