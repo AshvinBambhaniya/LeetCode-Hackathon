@@ -1,18 +1,20 @@
 func longestCommonPrefix(strs []string) string {
-    var prefix string
-
-    temp1 := strings.Split(strs[0], "")
-    temp2 := strings.Split(strs[1], "")
-    temp3 := strings.Split(strs[2], "")
-
-    for i:=0;i<len(temp1);i++{
-        if len(temp2) == i || len(temp3) == i{
-            break
-        }
-        if temp1[i] == temp2[i] && temp1[i] == temp3[i]{
-            prefix += temp1[i]
-        } 
+    if len(strs) == 0 {
+        return ""
     }
 
+    prefix := strs[0]
+
+    for i := 1; i < len(strs); i++ {
+        j := 0
+        for j < len(prefix) && j < len(strs[i]) && prefix[j] == strs[i][j] {
+            j++
+        }
+        prefix = prefix[:j]
+        if prefix == "" {
+            break
+        }
+    }
     return prefix
 }
+
